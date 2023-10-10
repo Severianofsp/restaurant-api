@@ -19,7 +19,7 @@ class AuthController {
     const { TOKEN_SECRET}= process.env
 
     try{
-    const token = jwt.sign({ email }, TOKEN_SECRET as string);
+    const token = jwt.sign({ email: userFound.email, document: userFound.document }, TOKEN_SECRET as string);
     console.log('test')
     return res.json({ token });
     }catch(error){
