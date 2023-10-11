@@ -12,7 +12,7 @@
     "servers": [
         {
             "url": "http://localhost:3000/",
-            "description": "Local Dev, or from Heroku"
+            "description": "Local Dev"
         },
         {
             "url": "/api/",
@@ -80,6 +80,29 @@
                         }
                     }
                 }
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Delete User in system",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "User removed"
+                    }
+                }
             }
         },
         "/users": {
@@ -119,7 +142,7 @@
                         "BearerAuth": []
                     }
                 ],
-                "summary": "Register user in system",
+                "summary": "Update user in system",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -147,6 +170,12 @@
             "get": {
                 "tags": [
                     "Orders"
+                ],
+                "summary": "Find order by Filter in system",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
                 ],
                 "requestBody": {
                     "content": {
@@ -176,11 +205,12 @@
                 "tags": [
                     "Orders"
                 ],
+                "summary": "Create Order in system",
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#components/schemas/OrderRequest"
+                                "$ref": "#components/schemas/OrderCreationRequest"
                             }
                         }
                     }
@@ -199,10 +229,16 @@
                 }
             }
         },
-        "/order/{id}": {
+        "/orders/{id}": {
             "get": {
                 "tags": [
                     "Orders"
+                ],
+                "summary": "Get Order by id in system",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
                 ],
                 "parameters": [
                     {
@@ -229,10 +265,39 @@
                     }
                 }
             },
+            "delete": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Delete Order by id in system",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Order ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Order removed"
+                    }
+                }
+            },
             "put": {
                 "tags": [
                     "Orders"
                 ],
+                "summary": "Update Order by id in system",
                 "security": [
                     {
                         "BearerAuth": []
@@ -262,11 +327,17 @@
                 "tags": [
                     "Products"
                 ],
+                "summary": "Create Product in system",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#components/schemas/ProductRequest"
+                                "$ref": "#components/schemas/ProductCreationRequest"
                             }
                         }
                     }
@@ -281,6 +352,103 @@
                                 }
                             }
                         }
+                    }
+                }
+            }
+        },
+        "/products/{id}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get Product by id in system",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Produc ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Find Product by id in system",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#components/schemas/ProductResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Delete Product by id in system",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Produc ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Product removed"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Update Product by id in system",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Produc ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#components/schemas/ProductCreationRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Update Product by id in system"
                     }
                 }
             }
@@ -325,7 +493,7 @@
                     }
                 }
             },
-            "OrderRequest": {
+            "OrderCreationRequest": {
                 "type": "object",
                 "properties": {
                     "user": {
@@ -572,7 +740,7 @@
                     }
                 }
             },
-            "ProductRequest": {
+            "ProductCreationRequest": {
                 "type": "object",
                 "properties": {
                     "name": {
@@ -589,6 +757,23 @@
             "ProductCreationResponse": {
                 "type": "object",
                 "properties": {
+                    "productCode": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "dateCreation": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ProductResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
                     "productCode": {
                         "type": "string"
                     },
