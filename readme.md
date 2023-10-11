@@ -30,7 +30,7 @@
 
 ## Get Starter
 
-Install dependeces:
+Install dependencies:
 
 `npm init`
 
