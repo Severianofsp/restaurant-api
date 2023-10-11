@@ -3,8 +3,10 @@ dotenv.config();
 import express, { Application } from 'express';
 import authRoutes from './routes/authRoutes';
 import userRoutes from './routes/userRoutes';
+import swaggerRoutes from './routes/swaggerRoutes';
 import 'reflect-metadata';
 import './config/data-source';
+import morgan from 'morgan';
 
 class App {
     public app: Application;
@@ -18,11 +20,13 @@ class App {
     middelware() {
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use(express.json());
+        this.app.use(morgan('tiny'));
     }
 
     routes() {
         this.app.use('/auth', authRoutes);
         this.app.use('/users', userRoutes);
+        this.app.use('/docs', swaggerRoutes);
     }
 }
 

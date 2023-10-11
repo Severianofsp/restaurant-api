@@ -2,8 +2,11 @@ import { Request, Response } from 'express';
 import userRepository from '../repository/userRepository';
 import { CustomRequest } from '../middlewares/validate';
 import { QueryFailedError } from 'typeorm';
+import { Route, Post, Get, Put } from 'tsoa';
 
+@Route('user')
 class UserController {
+    @Post('/')
     async register(req: Request, res: Response) {
         try {
             const newUser = userRepository.create(req.body);
@@ -19,11 +22,14 @@ class UserController {
             }
         }
     }
+
+    @Get('/search')
     async findAll(req: Request, res: Response) {
         const allUser = await userRepository.find();
         return res.json(allUser);
     }
 
+    @Get('/')
     async findByDocument(req: Request, res: Response) {
         const user = (req as CustomRequest).user;
 
@@ -34,6 +40,7 @@ class UserController {
         return res.json(userFound);
     }
 
+    @Put('/')
     async updateUser(req: Request, res: Response) {
         try {
             const { email } = (req as CustomRequest).user;
