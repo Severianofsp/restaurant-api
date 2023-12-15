@@ -2,12 +2,12 @@ import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
 export interface CustomRequest extends Request {
-    user: { email: string; document: string };
+    user: { id: number; email: string };
 }
 
 export interface JwtPayload {
+    id: number;
     email: string;
-    document: string;
 }
 
 class Validate {
@@ -21,9 +21,9 @@ class Validate {
 
         const decoded = jwt.verify(token, TOKEN_SECRET as string) as JwtPayload;
 
-        const { document, email } = decoded;
+        const { email, id } = decoded;
 
-        (req as CustomRequest).user = { document, email };
+        (req as CustomRequest).user = { id, email };
 
         next();
     }

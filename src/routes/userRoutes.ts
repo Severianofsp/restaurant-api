@@ -4,8 +4,8 @@ import validate from '../middlewares/validate';
 const router: Router = Router();
 
 router.post('/register', userController.register);
-router.get('/list', validate.auth, userController.findAll);
-router.get('/', validate.auth, userController.findByDocument);
+router.get('/', validate.auth, userController.findAll);
+router.get('/:id', validate.auth, userController.findById);
 router.put('/', validate.auth, userController.updateUser);
 
 export default router;

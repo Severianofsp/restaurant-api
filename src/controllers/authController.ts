@@ -1,11 +1,8 @@
 import jwt from 'jsonwebtoken';
 import { Request, Response } from 'express';
 import userRepository from '../repository/userRepository';
-import { Route, Get } from 'tsoa';
 
-@Route('auth')
 class AuthController {
-    @Get('/')
     async getToken(req: Request, res: Response) {
         const { email, password } = req.body;
 

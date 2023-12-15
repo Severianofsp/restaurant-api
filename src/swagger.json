@@ -21,6 +21,10 @@
     ],
     "tags": [
         {
+            "name": "Auth",
+            "description": "API for authorize user"
+        },
+        {
             "name": "Users",
             "description": "API for users in the system"
         },
@@ -34,6 +38,35 @@
         }
     ],
     "paths": {
+        "/auth": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Get token",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#components/schemas/AuthRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Get token from email and password",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#components/schemas/AuthResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/users/{id}": {
             "get": {
                 "tags": [
@@ -784,6 +817,21 @@
                         "type": "string"
                     }
                 }
+            },
+            "AuthRequest": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "AuthResponse": {
+                "type": "object",
+                "properties": {}
             }
         },
         "securitySchemes": {
