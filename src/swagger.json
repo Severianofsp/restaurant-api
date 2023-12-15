@@ -15,6 +15,10 @@
             "description": "Local Dev"
         },
         {
+            "url": "https://restaurant-api-1xwn.onrender.com/",
+            "description": "On render URL"
+        },
+        {
             "url": "/api/",
             "description": "With docker-compose and nginx proxy"
         }
@@ -40,9 +44,7 @@
     "paths": {
         "/auth": {
             "post": {
-                "tags": [
-                    "Auth"
-                ],
+                "tags": ["Auth"],
                 "summary": "Get token",
                 "requestBody": {
                     "content": {
@@ -69,9 +71,7 @@
         },
         "/users/{id}": {
             "get": {
-                "tags": [
-                    "Users"
-                ],
+                "tags": ["Users"],
                 "summary": "Get user by id in system",
                 "parameters": [
                     {
@@ -115,9 +115,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "Users"
-                ],
+                "tags": ["Users"],
                 "summary": "Delete User in system",
                 "parameters": [
                     {
@@ -140,9 +138,7 @@
         },
         "/users": {
             "post": {
-                "tags": [
-                    "Users"
-                ],
+                "tags": ["Users"],
                 "summary": "Register user in system",
                 "requestBody": {
                     "content": {
@@ -167,9 +163,7 @@
                 }
             },
             "put": {
-                "tags": [
-                    "Users"
-                ],
+                "tags": ["Users"],
                 "security": [
                     {
                         "BearerAuth": []
@@ -201,9 +195,7 @@
         },
         "/orders/search": {
             "get": {
-                "tags": [
-                    "Orders"
-                ],
+                "tags": ["Orders"],
                 "summary": "Find order by Filter in system",
                 "security": [
                     {
@@ -235,9 +227,7 @@
         },
         "/orders": {
             "post": {
-                "tags": [
-                    "Orders"
-                ],
+                "tags": ["Orders"],
                 "summary": "Create Order in system",
                 "requestBody": {
                     "content": {
@@ -264,9 +254,7 @@
         },
         "/orders/{id}": {
             "get": {
-                "tags": [
-                    "Orders"
-                ],
+                "tags": ["Orders"],
                 "summary": "Get Order by id in system",
                 "security": [
                     {
@@ -299,9 +287,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "Orders"
-                ],
+                "tags": ["Orders"],
                 "summary": "Delete Order by id in system",
                 "security": [
                     {
@@ -327,9 +313,7 @@
                 }
             },
             "put": {
-                "tags": [
-                    "Orders"
-                ],
+                "tags": ["Orders"],
                 "summary": "Update Order by id in system",
                 "security": [
                     {
@@ -357,9 +341,7 @@
         },
         "/products": {
             "post": {
-                "tags": [
-                    "Products"
-                ],
+                "tags": ["Products"],
                 "summary": "Create Product in system",
                 "security": [
                     {
@@ -391,9 +373,7 @@
         },
         "/products/{id}": {
             "get": {
-                "tags": [
-                    "Products"
-                ],
+                "tags": ["Products"],
                 "summary": "Get Product by id in system",
                 "parameters": [
                     {
@@ -421,9 +401,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "Products"
-                ],
+                "tags": ["Products"],
                 "summary": "Delete Product by id in system",
                 "security": [
                     {
@@ -449,9 +427,7 @@
                 }
             },
             "put": {
-                "tags": [
-                    "Products"
-                ],
+                "tags": ["Products"],
                 "summary": "Update Product by id in system",
                 "security": [
                     {
