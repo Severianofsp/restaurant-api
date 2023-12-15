@@ -7,6 +7,7 @@ import swaggerRoutes from './routes/swaggerRoutes';
 import 'reflect-metadata';
 import './config/data-source';
 import morgan from 'morgan';
+import cors from 'cors';
 
 class App {
     public app: Application;
@@ -21,6 +22,7 @@ class App {
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use(express.json());
         this.app.use(morgan('tiny'));
+        this.app.use(cors());
     }
 
     routes() {
