@@ -11,12 +11,12 @@
     },
     "servers": [
         {
-            "url": "http://localhost:3000/",
-            "description": "Local Dev"
-        },
-        {
             "url": "https://restaurant-api-1xwn.onrender.com/",
             "description": "On render URL"
+        },
+        {
+            "url": "http://localhost:3000/",
+            "description": "Local Dev"
         },
         {
             "url": "/api/",
@@ -485,10 +485,7 @@
             "UserRequest": {
                 "type": "object",
                 "properties": {
-                    "firstName": {
-                        "type": "string"
-                    },
-                    "lastName": {
+                    "name": {
                         "type": "string"
                     },
                     "email": {
